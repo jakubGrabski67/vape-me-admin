@@ -28,12 +28,13 @@ let adminEmails = [];
 })();
 
 export const authOptions = {
-  secret: process.env.NEXTAUTH_SECRET || generateNextAuthSecret(), // Use NEXTAUTH_SECRET if available, otherwise generate a new secret
+  secret: process.env.NEXTAUTH_SECRET || generateNextAuthSecret(),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      allowDangerousEmailAccountLinking: true,
+      redirectUri: "https://vape-me-admin.netlify.app/api/auth/callback/google",
+      //allowDangerousEmailAccountLinking: true,
     }),
   ],
   adapter: MongoDBAdapter(clientPromise),
