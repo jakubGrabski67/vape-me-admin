@@ -1,6 +1,11 @@
 {
     "functions": {
-      "maxDuration": 60
+      "api/auth/callback/google": {
+        "maxDuration": 60
+      },
+      "inne-funkcje/*": {
+        "maxDuration": 10
+      }
     }
   }
   
