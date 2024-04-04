@@ -3,6 +3,20 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth, { getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
+const generateRandomString = (length) => {
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
+
+const generateNextAuthSecret = () => {
+  // Generate a random string of length 64
+  return generateRandomString(64);
+};
+
 let adminEmails = [];
 
 (async () => {
@@ -14,7 +28,7 @@ let adminEmails = [];
 })();
 
 export const authOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || generateNextAuthSecret(), // Use NEXTAUTH_SECRET if available, otherwise generate a new secret
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
