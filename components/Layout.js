@@ -15,6 +15,7 @@ export default function Layout({ children }) {
              onClick={(e) => {
               e.preventDefault()
               signIn('google', {
+                callbackUrl: '/Dashboard/DefaultDash',
               })
             }}
             
