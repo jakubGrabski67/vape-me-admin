@@ -12,7 +12,13 @@ export default function Layout({ children }) {
       <div className="bg-bgGray w-screen h-screen flex items-center">
         <div className="text-center w-full">
           <button
-            onClick={() => signIn("google")}
+             onClick={(e) => {
+              e.preventDefault()
+              signIn('google', {
+                callbackUrl: '/',
+              })
+            }}
+            
             className="bg-white p-2 px-4 rounded-lg"
           >
             Zaloguj się przez Google
