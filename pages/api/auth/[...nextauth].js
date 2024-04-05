@@ -33,7 +33,7 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      redirectUri: "https://vape-me-admin.netlify.app/api/auth/callback/google",
+     // redirectUri: "https://vape-me-admin.netlify.app/api/auth/callback/google",
       //allowDangerousEmailAccountLinking: true,
     }),
   ],
